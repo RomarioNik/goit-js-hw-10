@@ -1,6 +1,6 @@
 import './css/styles.css';
-import listcountriesTpl from './templates/listcountry.hbs';
-import itemcountry from './templates/itemcountry.hbs';
+import { createCountriesList } from './templates/createCountriesList.js';
+import { createCountryInfo } from './templates/createCountryInfo.js';
 import { fetchCountries } from './js/fetchCountries';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import debounce from 'lodash.debounce';
@@ -54,30 +54,26 @@ function handleInput(e) {
         return;
       }
 
-      console.log('country.length-OUT; ', country.length);
       if (country.length === 1) {
-        console.log('country.length; ', country.length);
         renderCountryInfo(country);
         return;
       }
 
       renderCountriesList(country);
     })
-    .catch(err => {
-      console.log('country.length-CATCH:');
-      if (err.message === 404) onNotification('failure');
+    .catch(() => {
+      onNotification('failure');
     });
 }
 
-function renderCountriesList(countries) {
+function renderCountriesList(country) {
   clearCountriesItem();
-  refs.listEl.innerHTML = listcountriesTpl(countries);
+  refs.listEl.innerHTML = createCountriesList(country);
 }
 
 function renderCountryInfo(country) {
-  console.log('country.renderCountryInfo:');
   clearCountriesList();
-  refs.itemEl.innerHTML = itemcountry(country);
+  refs.itemEl.innerHTML = createCountryInfo(country);
 }
 
 function clearCountriesList() {

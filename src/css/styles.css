@@ -10,7 +10,6 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
-  display: flex;
 }
 
 #search-box {
@@ -21,11 +20,6 @@ body {
 }
 
 /* countries list */
-
-.wrap {
-  margin: 0 auto;
-}
-
 .country-list,
 .country-item-list,
 .country-lang-list {
