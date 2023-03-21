@@ -7,7 +7,7 @@ export function fetchCountries(name) {
   return fetch(
     `${BASE_URL}/name/${name}?fields=name,capital,population,flags,languages`
   ).then(request => {
-    if (!request.ok) {
+    if (request.status === 404) {
       throw new Error(request.status);
     }
     return request.json();
