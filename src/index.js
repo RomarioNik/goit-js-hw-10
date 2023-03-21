@@ -54,15 +54,18 @@ function handleInput(e) {
         return;
       }
 
+      console.log('country.length-OUT; ', country.length);
       if (country.length === 1) {
+        console.log('country.length; ', country.length);
         renderCountryInfo(country);
         return;
       }
 
       renderCountriesList(country);
     })
-    .catch(() => {
-      onNotification('failure');
+    .catch(err => {
+      console.log('country.length-CATCH; ', country.length);
+      if (err.message === 404) onNotification('failure');
     });
 }
 
