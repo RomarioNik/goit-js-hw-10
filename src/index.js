@@ -64,7 +64,7 @@ function handleInput(e) {
       renderCountriesList(country);
     })
     .catch(err => {
-      console.log('country.length-CATCH; ', country.length);
+      console.log('country.length-CATCH:');
       if (err.message === 404) onNotification('failure');
     });
 }
@@ -75,6 +75,7 @@ function renderCountriesList(countries) {
 }
 
 function renderCountryInfo(country) {
+  console.log('country.renderCountryInfo:');
   clearCountriesList();
   refs.itemEl.innerHTML = itemcountry(country);
 }
